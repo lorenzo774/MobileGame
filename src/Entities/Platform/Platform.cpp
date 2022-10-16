@@ -15,7 +15,10 @@ void Platform::InitializePlatform()
     position.x = (isRightPlatform ? width - fullDistance : fullDistance);
     position.y = 0;
     // Create physics body
-    physicsBody = CreatePhysicsBodyRectangle(position, size.x * 2 - platformThickness, size.y * 2, 10000);
+    Vector2 bodyPosition;
+    bodyPosition.x = position.x + size.x / 2;
+    bodyPosition.y = position.y;
+    physicsBody = CreatePhysicsBodyRectangle(bodyPosition, size.x * 2 - platformThickness, size.y * 2, 10000);
     physicsBody->useGravity = false;
     physicsBody->enabled = false;
 }

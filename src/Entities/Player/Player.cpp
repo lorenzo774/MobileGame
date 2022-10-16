@@ -1,11 +1,14 @@
 #include "raylib.h"
 #include "physac.h"
 #include "Player.h"
+#include <iostream>
+#include "../../UI/PointsTxt/PointsTxt.h"
 #include "../../Input/PlayerInput.h"
 #include "../../Settings/Settings.h"
 
-Player::Player() : Sprite::Sprite("player")
+Player::Player(PointsTxt* _pointsTxt) : Sprite::Sprite("player")
 {
+    pointsTxt = _pointsTxt;
     currentState = PlayerState::Moving; // Player state
     // Set position to center
     position.x = (width / 2) - size.x / 2;
@@ -53,6 +56,7 @@ void Player::Update()
     }
     distanceFromStart += speed * GetFrameTime();
     // Update TXT
+    pointsTxt->text = std::to_string((int)distanceFromStart);
     // Update position
     Vector2 curPosition;
     curPosition.x = physicsBody->position.x - size.x / 2;
@@ -65,3 +69,4 @@ void Player::ChangeGravity()
 {
     SetPhysicsGravity(gravity * (isOnRight ? -1 : 1), 0);
 }    
+

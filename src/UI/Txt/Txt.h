@@ -1,12 +1,13 @@
 #include "raylib.h"
+#include <iostream>
 #pragma once
 
 class Txt
 {
 public:
     const char* tag;
-    const char* text = "";
-    int fontSize = 20;
+    std::string text = "0";
+    int fontSize = 110;
     Vector2 pos;
     Color color = GetColor(0xFFFFFF);
     Txt(const char* _tag);

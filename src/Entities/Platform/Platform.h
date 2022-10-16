@@ -6,7 +6,7 @@ class Platform : public Sprite
 {   
 public: 
     int distanceFromBorder = 10;
-    int platformThickness = 4;
+    int platformThickness = 6;
     PhysicsBody physicsBody;
     Platform(const char* tag, bool _isRightPlatform);
     virtual void Draw() override;

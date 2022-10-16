@@ -9,10 +9,10 @@
 class Game
 {
 public:
-    Player player = Player();;
-    Platform leftPlatform = Platform("right_platform", true);
-    Platform rightPlatform = Platform("left_platform", false);;
-    PointsTxt pointTxt = PointsTxt();
+    Player* player;
+    Platform* leftPlatform = new Platform("right_platform", true);
+    Platform* rightPlatform = new Platform("left_platform", false);;
+    PointsTxt* pointTxt = new PointsTxt();
     Game();
     void Run();
 
