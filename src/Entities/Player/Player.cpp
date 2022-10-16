@@ -6,6 +6,7 @@
 
 Player::Player() : Sprite::Sprite("player")
 {
+    currentState = PlayerState::Moving; // Player state
     // Set position to center
     position.x = (width / 2) - size.x / 2;
     position.y = (height / 2) - size.y / 2;

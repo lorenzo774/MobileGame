@@ -5,7 +5,7 @@
 class Platform : public Sprite 
 {   
 public: 
-    int distanceFromBorder = 70;
+    int distanceFromBorder = 10;
     int platformThickness = 4;
     PhysicsBody physicsBody;
     Platform(const char* tag, bool _isRightPlatform);

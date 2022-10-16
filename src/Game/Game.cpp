@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "physac.h"
 #include "../Settings/Settings.h"
+#include "raygui.h"
 
 /// @brief Game initialization
 Game::Game()
@@ -11,6 +12,8 @@ Game::Game()
 /// @brief Game loop
 void Game::Run()
 {
+    
+    
     InitPhysics();
     SetPhysicsGravity(-gravity, 0);
     InitWindow(width, height, "test");
@@ -20,6 +23,12 @@ void Game::Run()
             DrawFPS(10, 10);
             DrawUIElements();
             DrawSprites();
+            Rectangle rect;
+            rect.height = 80;
+            rect.width = 200;
+            rect.x = 100;
+            rect.y = 100;
+            GuiButton(rect, "TEST");
         ClearBackground(background);
         EndDrawing();
         UpdateSprites();
