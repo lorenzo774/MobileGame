@@ -1,3 +1,10 @@
+# Open scrcpy
+$process = Get-Process -Name "scrcpy" -ErrorAction SilentlyContinue;
+if (!$process)
+{
+    Start-Process -NoNewWindow "scrcpy.exe"
+}
+
 # Uninstall app
 adb.exe uninstall --user 0 com.lorenzo774.MobileGame
 # Build app and install it
