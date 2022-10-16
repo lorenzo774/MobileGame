@@ -312,8 +312,6 @@ logcat:
 # Install and monitorize $(PROJECT_NAME).apk to default emulator/device
 deploy:
 	$(ANDROID_PLATFORM_TOOLS)/adb install $(PROJECT_NAME).apk
-	$(ANDROID_PLATFORM_TOOLS)/adb logcat -c
-	$(ANDROID_PLATFORM_TOOLS)/adb logcat raylib:V *:S
 
 #$(ANDROID_PLATFORM_TOOLS)/adb logcat *:W
 
