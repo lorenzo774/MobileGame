@@ -1,7 +1,7 @@
 #include "Platform.h"
 #include "../../Settings/Settings.h"
 
-Platform::Platform(const char* tag, bool _isRightPlatform) : Sprite::Sprite(tag)
+Platform::Platform(bool _isRightPlatform) : Sprite::Sprite()
 {
     isRightPlatform = _isRightPlatform;
     InitializePlatform();

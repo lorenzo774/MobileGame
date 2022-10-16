@@ -6,7 +6,7 @@
 #include "../../Input/PlayerInput.h"
 #include "../../Settings/Settings.h"
 
-Player::Player(PointsTxt* _pointsTxt) : Sprite::Sprite("player")
+Player::Player(PointsTxt* _pointsTxt) : Sprite::Sprite()
 {
     pointsTxt = _pointsTxt;
     currentState = PlayerState::Moving; // Player state

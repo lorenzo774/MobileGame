@@ -8,7 +8,7 @@ public:
     int distanceFromBorder = 10;
     int platformThickness = 6;
     PhysicsBody physicsBody;
-    Platform(const char* tag, bool _isRightPlatform);
+    Platform(bool _isRightPlatform);
     virtual void Draw() override;
     virtual void Update() override;
 private:

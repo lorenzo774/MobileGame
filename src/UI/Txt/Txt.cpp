@@ -2,11 +2,10 @@
 #include "Txt.h"
 
 /// @brief UI element
-Txt::Txt(const char* _tag)
+Txt::Txt()
 {
     pos.x = 0;
     pos.y = 30;
-    tag = _tag;
 }
 
 void Txt::Draw()

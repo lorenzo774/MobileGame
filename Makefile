@@ -376,6 +376,7 @@ PROJECT_SOURCE_FILES ?= \
     src/main.cpp \
     src/Game/Game.cpp \
 	src/UI/PointsTxt/PointsTxt.cpp \
+	src/UI/OptionButton/OptionButton.cpp \
     src/Entities/Player/Player.cpp \
     src/Entities/Platform/Platform.cpp \
     src/Entities/Sprite/Sprite.cpp \

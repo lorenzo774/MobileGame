@@ -3,6 +3,8 @@
 #include "physac.h"
 #include "../Entities/Player/Player.h"
 #include "../Settings/Settings.h"
+#include "raygui.h"
+#include "../Style/dark.h" // Style
 
 /// @brief Game initialization
 Game::Game()
@@ -13,14 +15,15 @@ Game::Game()
 /// @brief Game loop
 void Game::Run()
 {
+    GuiLoadStyleDark(); // Set style
     InitPhysics();
     SetPhysicsGravity(-gravity, 0);
     InitWindow(width, height, "test");
     while (!WindowShouldClose())
     {
         BeginDrawing();
-            DrawUIElements();
             DrawSprites();
+            DrawUIElements();
             ClearBackground(background);
         EndDrawing();
         UpdateSprites();
@@ -46,5 +49,6 @@ void Game::DrawSprites()
 
 void Game::DrawUIElements()
 {
+    optionButton->Draw();
     pointTxt->Draw();
 }
