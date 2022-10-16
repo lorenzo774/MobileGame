@@ -34,3 +34,7 @@
 
 # Android build
 android.*
+
+# IDE
+.vscode
+.idea

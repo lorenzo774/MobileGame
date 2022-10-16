@@ -139,7 +139,7 @@ endif
 
 # Define default C compiler: CC
 #------------------------------------------------------------------------------------------------
-CC = g++.exe
+CC = clang++
 
 ifeq ($(PLATFORM),PLATFORM_DESKTOP)
     ifeq ($(PLATFORM_OS),OSX)
@@ -189,8 +189,8 @@ endif
 #  -Wno-missing-braces  ignore invalid warning (GCC bug 53119)
 #  -Wno-unused-value    ignore unused return values of some functions (i.e. fread())
 #  -D_DEFAULT_SOURCE    use with -std=c99 on Linux and PLATFORM_WEB, required for timespec
-CFLAGS = -std=c++11 -lc++ -Wall -Wno-missing-braces -Wunused-result -D_DEFAULT_SOURCE
-
+CFLAGS = -std=c++11 -Wextern-initializer -lc++ -Wall -Wno-missing-braces -Wunused-result -D_DEFAULT_SOURCE
+ 
 ifeq ($(BUILD_MODE),DEBUG)
     CFLAGS += -g -D_DEBUG
 else
@@ -228,7 +228,7 @@ endif
 # Define include paths for required headers: INCLUDE_PATHS
 # NOTE: Some external/extras libraries could be required (stb, physac, easings...)
 #------------------------------------------------------------------------------------------------
-INCLUDE_PATHS = -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/extras
+INCLUDE_PATHS = -I.  -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/include -I$(RAYLIB_PATH)/src/extras
 
 # Define additional directories containing required header files
 ifeq ($(PLATFORM),PLATFORM_DESKTOP)
@@ -374,6 +374,13 @@ endif
 #------------------------------------------------------------------------------------------------
 PROJECT_SOURCE_FILES ?= \
     src/main.cpp \
+    src/Game/Game.cpp \
+	src/UI/PointsTxt/PointsTxt.cpp \
+    src/Entities/Player/Player.cpp \
+    src/Entities/Platform/Platform.cpp \
+    src/Entities/Sprite/Sprite.cpp \
+    src/Input/PlayerInput.cpp \
+    src/UI/Txt/Txt.cpp
 
 # Define all object files from source files
 OBJS = $(patsubst %.c, %.o, $(PROJECT_SOURCE_FILES))

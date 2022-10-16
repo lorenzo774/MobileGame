@@ -1,14 +1,11 @@
 #include "raylib.h"
+#define PHYSAC_IMPLEMENTATION
+#include "physac.h"
+#include "Game/Game.h"
 
 int main(void)
 {
-    InitWindow(400, 1000, "raylib [core] example - basic window");
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-            ClearBackground(RAYWHITE);
-            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
-    }
-    CloseWindow();
+    Game game = Game();
+    game.Run();
+    return 0;
 }
