@@ -5,7 +5,6 @@
 class Platform : public Sprite 
 {   
 public: 
-    int distanceFromBorder = 10;
     int platformThickness = 6;
     PhysicsBody physicsBody;
     Platform(bool _isRightPlatform);

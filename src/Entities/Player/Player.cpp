@@ -12,7 +12,7 @@ Player::Player(PointsTxt* _pointsTxt) : Sprite::Sprite()
     currentState = PlayerState::Moving; // Player state
     // Set position to center
     position.x = (width / 2) - size.x / 2;
-    position.y = (height / 2) - size.y / 2;
+    position.y = (height / 1.4) - size.y / 2;
     Vector2 bodyPosition;
     bodyPosition.x = position.x + (size.x / 2);
     bodyPosition.y = position.y + (size.y / 2);

@@ -15,6 +15,7 @@ const Gesture tap = GESTURE_TAP;
 */
 const Color background = BLACK;
 const Color playerColor = BLUE;
+const Color spikeColor = RED;
 const Color rightPlatformColor = ORANGE;
 const Color leftPlatformColor = YELLOW;
 const Color foregroundHUD = WHITE;
@@ -23,3 +24,8 @@ const Color foregroundHUD = WHITE;
     PHYSICS
 */
 const float gravity = 3.0;
+
+/*
+    GAME
+ */
+const int distanceFromBorder = 10;

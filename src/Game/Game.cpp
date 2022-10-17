@@ -4,7 +4,7 @@
 #include "../Entities/Player/Player.h"
 #include "../Settings/Settings.h"
 #include "raygui.h"
-#include "../Style/dark.h" // Style
+#include "../UI/Style/dark.h" // Style
 
 /// @brief Game initialization
 Game::Game()
@@ -23,6 +23,7 @@ void Game::Run()
     {
         BeginDrawing();
             DrawSprites();
+            levelBuilder->Run();
             DrawUIElements();
             ClearBackground(background);
         EndDrawing();
