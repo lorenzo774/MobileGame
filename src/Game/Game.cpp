@@ -1,5 +1,6 @@
-#include "Game.h"
+
 #include "raylib.h"
+#include "Game.h"
 #include "physac.h"
 #include "../Entities/Player/Player.h"
 #include "../Settings/Settings.h"
@@ -18,7 +19,10 @@ void Game::Run()
     GuiLoadStyleDark(); // Set style
     InitPhysics();
     SetPhysicsGravity(-gravity, 0);
+    InitAudioDevice();
     InitWindow(width, height, "test");
+    Music music = LoadMusicStream("test.mp3");
+    PlayMusicStream(music);
     while (!WindowShouldClose())
     {
         BeginDrawing();
@@ -28,6 +32,7 @@ void Game::Run()
             ClearBackground(background);
         EndDrawing();
         UpdateSprites();
+        UpdateMusicStream(music);
     }
     ClosePhysics();
     CloseWindow();

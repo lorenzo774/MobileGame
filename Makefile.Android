@@ -124,7 +124,7 @@ CFLAGS += -ffunction-sections -funwind-tables -fstack-protector-strong -fPIC --s
 # Compiler options for the linker
 CFLAGS += -Wall -Wa,--noexecstack -Wformat -Werror=format-security -no-canonical-prefixes
 # Preprocessor macro definitions
-CFLAGS += -DANDROID -DPLATFORM_ANDROID -D__ANDROID_API__=$(ANDROID_API_VERSION)
+CFLAGS += -DMA_DEBUG_OUTPUT -DANDROID -DMA_ANDROID -DPLATFORM_ANDROID -D__ANDROID_API__=$(ANDROID_API_VERSION) -DMA_SUPPORT_AAUDIO
 
 # Paths containing required header files
 INCLUDE_PATHS = -I. -I$(RAYLIB_PATH)/src -I$(NATIVE_APP_GLUE_PATH) -I$(RAYLIB_PATH)/src/external
@@ -139,7 +139,7 @@ LDFLAGS += -L. -L$(PROJECT_BUILD_PATH)/obj -L$(PROJECT_BUILD_PATH)/lib/$(ANDROID
 
 # Define any libraries to link into executable
 # if you want to link libraries (libname.so or libname.a), use the -lname
-LDLIBS = -lm -lc -lraylib -llog -landroid -lEGL -lGLESv2 -lOpenSLES -ldl
+LDLIBS = -DANDROID -lm -lc -lraylib -llog -landroid -lEGL -lGLESv2 -lOpenSLES -ldl
 
 # Generate target objects list from PROJECT_SOURCE_FILES
 OBJS = $(patsubst %.c, $(PROJECT_BUILD_PATH)/obj/%.o, $(PROJECT_SOURCE_FILES))
@@ -147,9 +147,9 @@ OBJS = $(patsubst %.c, $(PROJECT_BUILD_PATH)/obj/%.o, $(PROJECT_SOURCE_FILES))
 # Android APK building process... some steps required...
 # NOTE: typing 'make' will invoke the default target entry called 'all',
 all: clean \
-	 create_temp_project_dirs \
-     copy_project_required_libs \
-     copy_project_resources \
+     create_temp_project_dirs \
+	 copy_project_required_libs \
+	 copy_project_resources \
      generate_loader_script \
      generate_android_manifest \
      generate_apk_keystore \
@@ -161,6 +161,10 @@ all: clean \
      sign_project_apk_package \
      zipalign_project_apk_package \
 	 deploy
+
+#  clean \
+#  create_temp_project_dirs \
+#  copy_project_required_libs \
 
 # Create required temp directories for APK building
 create_temp_project_dirs:
@@ -263,7 +267,7 @@ compile_native_app_glue:
 
 # Compile project code into a shared library: lib/lib$(PROJECT_LIBRARY_NAME).so 
 compile_project_code: $(OBJS)
-	$(CC)  -o $(PROJECT_BUILD_PATH)/lib/$(ANDROID_ARCH_NAME)/lib$(PROJECT_LIBRARY_NAME).so $(OBJS) -shared $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS)
+	$(CC) -o $(PROJECT_BUILD_PATH)/lib/$(ANDROID_ARCH_NAME)/lib$(PROJECT_LIBRARY_NAME).so $(OBJS) -shared $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS)
 
 # Compile all .c files required into object (.o) files
 # NOTE: Those files will be linked into a shared library
@@ -317,6 +321,5 @@ deploy:
 
 # Clean everything
 clean:
-	if exist $(PROJECT_BUILD_PATH) del $(PROJECT_BUILD_PATH)\* /f /s /q
-	if exist $(PROJECT_BUILD_PATH) rmdir $(PROJECT_BUILD_PATH) /s /q
+	if exist $(PROJECT_BUILD_PATH) del $(PROJECT_BUILD_PATH)\bin $(PROJECT_BUILD_PATH)\lib $(PROJECT_BUILD_PATH)\obj $(PROJECT_BUILD_PATH)\res $(PROJECT_BUILD_PATH)\src $(PROJECT_BUILD_PATH)\AndroidManifest.xml $(PROJECT_BUILD_PATH)\$(PROJECT_NAME).keystore  /f /s /q
 	@echo Cleaning done

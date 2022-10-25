@@ -33,8 +33,11 @@
 *.apk
 
 # Android build
-android.*
+android.*/*
 
 # IDE
 .vscode
 .idea
+
+# Android assets
+!android.*/assets

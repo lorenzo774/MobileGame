@@ -24,10 +24,10 @@ void Obstacle::DrawSpikes()
         Vector2 polyPosition;
         polyPosition.x = position.x + (size.x / 2);
         polyPosition.y = position.y + yOffset;
-        int rotation = -90;
+        int rotation = 90;
         if(!rightObstacle)
         {
-            rotation = 90;
+            rotation = -90;
         }
         DrawPolyLinesEx(polyPosition, 3, 40, rotation, 14, spikeColor);
         // DrawTriangle(v1, v2, v3, obstacleColor);

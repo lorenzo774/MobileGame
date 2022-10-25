@@ -14,15 +14,16 @@ LevelBuilder::LevelBuilder(int _difficulty)
 void LevelBuilder::SpawnObstacle()
 {
     int repeat = (std::rand() % 5) + 1;
-    bool rightObstacle = std::rand() % 2;
+    bool rightObstacle = rightDirection;
     Obstacle* obstacle = new Obstacle(repeat, rightObstacle);
     obstacles.push_back(obstacle);
+    rightDirection = !rightDirection;
 }
 
 // Set random time for obstacle spawn
 void LevelBuilder::SetRandTime()
 {
-    randTime = (std::rand() % 3) + 2;
+    randTime = (std::rand() % 2) + 1;
 }
 
 void LevelBuilder::Run()
